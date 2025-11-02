@@ -1,0 +1,42 @@
+type: custom:navbar-card
+routes:
+  - url: /lovelace/default_view
+    icon: mdi:home
+    label: Home
+  - url: /lovelace/default_view/devices
+    icon: mdi:devices
+    label: Devices
+    hold_action:
+      action: navigate
+      navigation_path: /config/devices/dashboard
+  - url: /config/dashboard
+    icon: mdi:cog
+    label: Settings
+  - icon: mdi:console
+    label: Terminal
+    url: /a0d7b954_ssh/ingress
+    badge:
+      color: null
+      show: false
+  - icon: mdi:dots-horizontal
+    label: More
+    tap_action:
+      action: open-popup
+    popup:
+      - icon: mdi:hammer
+        url: /developer-tools/yaml
+      - icon: mdi:power
+        tap_action:
+          action: call-service
+          service: homeassistant.restart
+          service_data: {}
+          confirmation:
+            text: Are you sure you want to restart Home Assistant?
+styles: ".navbar-card {\n  --navbar-primary-color: rgba(255,255,255,0.50);\n  color: #fff;\n  --navbar-background-color: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));\n  backdrop-filter: blur(15px);\n  -webkit-backdrop-filter: blur(15px);\n  --navbar-box-shadow: 0 8px 25px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);\n  border: 1px solid rgba(255,255,255,0.15);\n  overflow: hidden;\n}\n\n.navbar-card::before {\n  content: '';\n  position: absolute;\n  inset: 0;\n  --navbar-border-radius: 25px;\n  --navbar-background-color: linear-gradient(135deg,\n\t\t\trgba(255, 255, 255, 0.12),\n\t\t\trgba(255, 255, 255, 0.06));\n  mix-blend-mode: overlay;\n  pointer-events: none;\n}\n\n.navbar-card::after {\n\tcontent: '';\n\tposition: absolute;\n\tinset: -2px;\n\t--navbar-border-radius: 24px;\n\t--navbar-background-color: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 70%),\n\t\tradial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.04), transparent 70%);\n\tfilter: blur(1px);\n    pointer-events: none;\n}\n\n.popup-item .button {\n  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));\n  color: #fff;\n  backdrop-filter: blur(15px);\n  -webkit-backdrop-filter: blur(15px);\n  box-shadow: 0 8px 25px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);\n  border: 1px solid rgba(255,255,255,0.15);\n  overflow: hidden;\n}\n\n.popup-item .button::before {\n  content: '';\n  position: absolute;\n  inset: 0;\n  border-radius: 25px;\n  background-color: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 70%),\n\t\tradial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.04), transparent 70%);\n  filter: blur(1px);\n  mix-blend-mode: overlay;\n  pointer-events: none;\n}\n\n.popup-item .button::after {\n  content: '';\n  position: absolute;\n  inset: -2px;\n  border-radius: 24px;\n  background-color: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 70%),\n\t\tradial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.04), transparent 70%);\n  filter: blur(1px);\n  pointer-events: none;\n}"
+layout:
+  auto_padding:
+    mobile_px: 20
+    desktop_px: 20
+haptic:
+  url: false
+desktop: {}
